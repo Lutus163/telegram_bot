@@ -3,13 +3,13 @@ from telebot import types
 import time
 
 # токен бота
-TOKEN = '7939072349:AAEmXZ1C78fyXcfXYrfK2eymZeRHJwXNV6U'
+TOKEN = '6779027788:AAGrfHq5F11bvIfW0Gnw6uGpZ9xAr6pVI_k'
 bot = telebot.TeleBot(TOKEN)
 
 # Словарь для хранения времени последнего запроса пользователя
 user_requests = {}
 # Лимит запросов
-REQUEST_LIMIT = 5  # Максимум запросов
+REQUEST_LIMIT = 15 # Максимум запросов
 TIME_FRAME = 10  # Время в секундах
 
 # Обработчик команды /start
@@ -38,10 +38,11 @@ def send_welcome(message):
     
     # Инлайн-кнопки
     keyboard = types.InlineKeyboardMarkup()
-    button1 = types.InlineKeyboardButton("Кнопка 1", callback_data="button1")
-    button2 = types.InlineKeyboardButton("Кнопка 2", callback_data="button2")
-    button3 = types.InlineKeyboardButton("Кнопка 3", callback_data="button3")
-    button4 = types.InlineKeyboardButton("Веб сайт", web_app=types.WebAppInfo(url="https://docs.python-telegram-bot.org/en/stable/examples.timerbot.html"))
+    button1 = types.InlineKeyboardButton("Подписаться", callback_data="button1")
+    button2 = types.InlineKeyboardButton("Консультации", callback_data="button2")
+    button3 = types.InlineKeyboardButton("Йога онлайн", callback_data="button3")
+    button4 = types.InlineKeyboardButton("Тренинги и обучение", callback_data="button4")
+    #button4 = types.InlineKeyboardButton("Тренинги и обучение", web_app=types.WebAppInfo(url="https://docs.python-telegram-bot.org/en/stable/examples.timerbot.html"))
     keyboard.add(button1, button2, button3, button4)
 
     # Приветственное сообщение с ником и инлайн-кнопками
@@ -75,7 +76,7 @@ def handle_query(call):
         back_button = types.InlineKeyboardButton("Назад", callback_data="back")
         keyboard.add(back_button)
         
-        bot.edit_message_text("Вы выбрали кнопку 1! Нажмите 'Назад', чтобы вернуться.", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
+        bot.edit_message_text("https://t.me/ivanmorozovyogapro\nПолезный контент для жизни и практики йоги. Анонсы мероприятий.", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
 
     if call.data == "button2":
         # Обновляем текст сообщения и инлайн-кнопки
@@ -83,7 +84,7 @@ def handle_query(call):
         back_button = types.InlineKeyboardButton("Назад", callback_data="back")
         keyboard.add(back_button)
         
-        bot.edit_message_text("Вы выбрали кнопку 2! Нажмите 'Назад', чтобы вернуться.", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
+        bot.edit_message_text("Кнопка 2", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
 
     if call.data == "button3":
         # Обновляем текст сообщения и инлайн-кнопки
@@ -91,18 +92,26 @@ def handle_query(call):
         back_button = types.InlineKeyboardButton("Назад", callback_data="back")
         keyboard.add(back_button)
         
-        bot.edit_message_text("Вы выбрали кнопку 3! Нажмите 'Назад', чтобы вернуться.", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
+        bot.edit_message_text("Кнопка 3", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
+    
+    if call.data == "button4":
+        # Обновляем текст сообщения и инлайн-кнопки
+        keyboard = types.InlineKeyboardMarkup()
+        back_button = types.InlineKeyboardButton("Назад", callback_data="back")
+        keyboard.add(back_button)
+        
+        bot.edit_message_text(" Международный тренинг Кундалини Йоги: Уровень 2\n«Мы готовы выйти за горизонты своей личности и создать жизнь нового уровня».\nМОДУЛЬ «Путешествие в Слушание: От пустых разговоров к осознанной коммуникации» \n23 - 29 марта 2025 года\nПриглашаем всех, кто завершил обучение на первом уровне (допускаются студенты других школ). Ведущие – Сатйяврати Карта (Франция), Цивилева Светлана, Морозов Иван, Терентьева Татьяна, Бабенко Алексей\nМесто проведения: эко-отель «Территория Дзэн», Тверская область, поселение Щеколдино. \nТрансфер туда – 23 марта в 15:00 от метро «Молодежная»,\nобратно - 29 марта в 11:00 из отеля (оплачивается отдельно).\nСтоимость участия:\n- Москва: 30400 руб.\n- Иногородние: 28500 руб.\nСтоимость для семейной пары (близких родственников):\n- Москва: 28500 руб.\n- Иногородние: 26600 руб.\nСКИДКА:\nповторное участие – 19000 руб.\nСТОИМОСТЬ ПРОЖИВАНИЯ оплачивается дополнительно:\n- 27500 руб. за двухместное проживание\n- 54000 руб. за одноместное проживание", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
     
     elif call.data == "back":
         # Возвращаемся в главное меню, обновляя текущее сообщение
         keyboard = types.InlineKeyboardMarkup()
-        button1 = types.InlineKeyboardButton("Кнопка 1", callback_data="button1")
-        button2 = types.InlineKeyboardButton("Кнопка 2", callback_data="button2")
-        button3 = types.InlineKeyboardButton("Кнопка 3", callback_data="button3")
-        button4 = types.InlineKeyboardButton("Веб сайт", web_app=types.WebAppInfo(url="https://docs.python-telegram-bot.org/en/stable/examples.timerbot.html"))
+        button1 = types.InlineKeyboardButton("Подписаться", callback_data="button1")
+        button2 = types.InlineKeyboardButton("Консультации", callback_data="button2")
+        button3 = types.InlineKeyboardButton("Йога онлайн", callback_data="button3")
+        button4 = types.InlineKeyboardButton("Тренинги и обучение", callback_data="button4")
         keyboard.add(button1, button2, button3, button4)
 
-        bot.edit_message_text(f'Привет, {username}! Выберите одну из кнопок:', chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
+        bot.edit_message_text(f'Привет, {username}!', chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
 
 # Запуск бота
 if __name__ == '__main__':
