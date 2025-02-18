@@ -1,4 +1,4 @@
-('D:\\Microsoft VS Code\\Projects\\build\\Bot\\PYZ-00.pyz',
+('D:\\telegram_bot\\build\\Bot\\PYZ-00.pyz',
  [('__future__',
    'C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python310\\lib\\__future__.py',
    'PYMODULE'),
