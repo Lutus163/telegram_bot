@@ -37,13 +37,14 @@ def send_welcome(message):
     username = message.from_user.username if message.from_user.username else "пользователь"
     
     # Инлайн-кнопки
-    keyboard = types.InlineKeyboardMarkup()
+    keyboard = types.InlineKeyboardMarkup(row_width=1)
     button1 = types.InlineKeyboardButton("Подписаться", callback_data="button1")
-    button2 = types.InlineKeyboardButton("Консультации", callback_data="button2")
+    button2 = types.InlineKeyboardButton("Индивидуальные консультации", callback_data="button2")
     button3 = types.InlineKeyboardButton("Йога онлайн", callback_data="button3")
     button4 = types.InlineKeyboardButton("Тренинги и обучение", callback_data="button4")
+    button5 = types.InlineKeyboardButton("Йога туры и путешествия", callback_data="button5")
     #button4 = types.InlineKeyboardButton("Тренинги и обучение", web_app=types.WebAppInfo(url="https://docs.python-telegram-bot.org/en/stable/examples.timerbot.html"))
-    keyboard.add(button1, button2, button3, button4)
+    keyboard.add(button1, button2, button3, button4, button5)
 
     # Приветственное сообщение с ником и инлайн-кнопками
     bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}! Выберите одну из кнопок:', reply_markup=keyboard)
@@ -102,14 +103,23 @@ def handle_query(call):
         
         bot.edit_message_text(" Международный тренинг Кундалини Йоги: Уровень 2\n«Мы готовы выйти за горизонты своей личности и создать жизнь нового уровня».\nМОДУЛЬ «Путешествие в Слушание: От пустых разговоров к осознанной коммуникации» \n23 - 29 марта 2025 года\nПриглашаем всех, кто завершил обучение на первом уровне (допускаются студенты других школ). Ведущие – Сатйяврати Карта (Франция), Цивилева Светлана, Морозов Иван, Терентьева Татьяна, Бабенко Алексей\nМесто проведения: эко-отель «Территория Дзэн», Тверская область, поселение Щеколдино. \nТрансфер туда – 23 марта в 15:00 от метро «Молодежная»,\nобратно - 29 марта в 11:00 из отеля (оплачивается отдельно).\nСтоимость участия:\n- Москва: 30400 руб.\n- Иногородние: 28500 руб.\nСтоимость для семейной пары (близких родственников):\n- Москва: 28500 руб.\n- Иногородние: 26600 руб.\nСКИДКА:\nповторное участие – 19000 руб.\nСТОИМОСТЬ ПРОЖИВАНИЯ оплачивается дополнительно:\n- 27500 руб. за двухместное проживание\n- 54000 руб. за одноместное проживание", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
     
+    if call.data == "button5":
+        # Обновляем текст сообщения и инлайн-кнопки
+        keyboard = types.InlineKeyboardMarkup()
+        back_button = types.InlineKeyboardButton("Назад", callback_data="back")
+        keyboard.add(back_button)
+        
+        bot.edit_message_text("Кнопка 5", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)    
+    
     elif call.data == "back":
         # Возвращаемся в главное меню, обновляя текущее сообщение
-        keyboard = types.InlineKeyboardMarkup()
+        keyboard = types.InlineKeyboardMarkup(row_width=1)
         button1 = types.InlineKeyboardButton("Подписаться", callback_data="button1")
-        button2 = types.InlineKeyboardButton("Консультации", callback_data="button2")
+        button2 = types.InlineKeyboardButton("Индивидуальные консультации", callback_data="button2")
         button3 = types.InlineKeyboardButton("Йога онлайн", callback_data="button3")
         button4 = types.InlineKeyboardButton("Тренинги и обучение", callback_data="button4")
-        keyboard.add(button1, button2, button3, button4)
+        button5 = types.InlineKeyboardButton("Йога туры и путешествия", callback_data="button5")
+        keyboard.add(button1, button2, button3, button4, button5)
 
         bot.edit_message_text(f'Привет, {username}!', chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
 
