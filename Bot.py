@@ -2,12 +2,22 @@ import telebot
 from telebot import types
 from telebot.types import InputMediaPhoto
 import time
+import os
+import sys
 
 # токен бота
-TOKEN = '6779027788:AAGrfHq5F11bvIfW0Gnw6uGpZ9xAr6pVI_k'
+TOKEN = '7520260408:AAGuLeCI9f8Jybp_fFQFyWi5WHaA69fkSYY'
 bot = telebot.TeleBot(TOKEN)
 
+def resource_path(relative_path):
+   # """ Получает абсолютный путь к ресурсу, работающий и при разработке, и в замороженном exe. """
+    try:
+        # PyInstaller создает временную папку и сохраняет путь в _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
 
+    return os.path.join(base_path, relative_path)
 
 # Словарь для хранения времени последнего запроса пользователя
 user_requests = {}
@@ -48,9 +58,11 @@ def send_welcome(message):
     button5 = types.InlineKeyboardButton("Йога туры и путешествия", callback_data="button5")
     #button4 = types.InlineKeyboardButton("Тренинги и обучение", web_app=types.WebAppInfo(url="https://vk.cc/cIhp9Y"))
     keyboard.add(button1, button2, button3, button4, button5)
-
+    
     # Приветственное сообщение с ником и инлайн-кнопками
     bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}! Выберите одну из кнопок:', reply_markup=keyboard)
+    
+
 
 
 # Обработчик нажатий на инлайн-кнопки
@@ -88,8 +100,11 @@ def handle_query(call):
         keyboard = types.InlineKeyboardMarkup()
         back_button = types.InlineKeyboardButton("Назад", callback_data="back")
         keyboard.add(back_button)
-        
-        bot.edit_message_text("Кнопка 2", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
+
+        with open('img/individual.jpg', 'rb') as photo:
+            media = InputMediaPhoto(photo, caption='Индивидуальные занятия')
+            bot.edit_message_media(media=media, chat_id=call.message.chat.id, message_id=call.message.message_id)
+            bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
 
     if call.data == "button3":
         # Обновляем текст сообщения и инлайн-кнопки
@@ -111,7 +126,7 @@ def handle_query(call):
         # Создаем клавиатуру с кнопками
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         button1 = types.InlineKeyboardButton("Место СИЛЫ: КАМБОДЖА ТАИЛАНД", url="https://vk.cc/cIhp9Y")
-        back_button = types.InlineKeyboardButton("Назад", callback_data="delete_message")
+        back_button = types.InlineKeyboardButton("Назад", callback_data="back")
         keyboard.add(button1, back_button)
 
         # Открываем файл изображения и отправляем его вместе с кнопками
@@ -120,18 +135,13 @@ def handle_query(call):
             bot.edit_message_media(media=media, chat_id=call.message.chat.id, message_id=call.message.message_id)
             bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
 
-    elif call.data == "delete_message":
-        # Удаляем текущее сообщение
-        bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
-
-        # Отправляем главное меню
-        send_or_edit_main_menu(call.message.chat.id)
 
 
 #bot.edit_message_text("🔥Старт бронирования! Только 3 места по супер цене‼️🔥\nДрузья, мы снова собираем команду для настоящего путешествия — путешествия, которое меняет внутренний мир так же, как и внешние горизонты.\nЗдесь будет сила единства, моменты, наполненные глубиной и осознанностью, утренние практики йоги под первыми лучами солнца и медитации в местах силы, где ощущается энергия веков. Это путешествие для тех, кто хочет не просто увидеть мир, но и почувствовать его.\nМы отправляемся в Тур Таиланд—Камбоджа — две страны, два мира, где древняя культура встречается с духом настоящего приключения.\nЧто вас ждет?\n🌏 От Чиангмая до райских островов\n✔ Горный север Таиланда: священные храмы, могучая энергия природы и чувство полной гармонии\n✔ Мистическая Камбоджа: легендарный Ангкор-Ват, древние святыни, затерянные в джунглях храмы и озеро Тонлесап с его уникальными плавучими деревнями\n✔ Финал — провинция Краби и Пхукет: море, солнце, белоснежные пляжи и волшебная природа залива Пханга\n🏍 Автомото-путешествие: свобода выбора✔ Х                    ", chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)    
-    
+  
     elif call.data == "back":
         # Возвращаемся в главное меню, обновляя текущее сообщение
+        bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         button1 = types.InlineKeyboardButton("Подписаться", callback_data="button1")
         button2 = types.InlineKeyboardButton("Индивидуальные консультации", callback_data="button2")
@@ -139,15 +149,8 @@ def handle_query(call):
         button4 = types.InlineKeyboardButton("Тренинги и обучение", callback_data="button4")
         button5 = types.InlineKeyboardButton("Йога туры и путешествия", callback_data="button5")
         keyboard.add(button1, button2, button3, button4, button5)
-        def send_or_edit_main_menu(chat_id, message_id=None):
-            if message_id:
-        # Если message_id передан, редактируем существующее сообщение
-                bot.edit_message_reply_markup(chat_id=chat_id, message_id=message_id, reply_markup=keyboard)
-            else:
-        # Если message_id не передан, отправляем новое сообщение с меню
-                bot.send_message(chat_id, "Выберите опцию:", reply_markup=keyboard)
-                bot.edit_message_text(f'Привет, {username}!', chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboard)
-        
+        bot.send_message(call.message.chat.id, "Главное меню:", reply_markup=keyboard)
+
 # Запуск бота
 if __name__ == '__main__':
     bot.polling(none_stop=True)
