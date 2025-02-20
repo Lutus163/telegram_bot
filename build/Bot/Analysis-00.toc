@@ -343,14 +343,24 @@
   ('tracemalloc',
    'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\tracemalloc.py',
    'PYMODULE'),
+<<<<<<< HEAD
   ('_py_abc',
    'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\_py_abc.py',
+=======
+  ('_colorize',
+   'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\_colorize.py',
+>>>>>>> b5c7d3a027752913dde426e7eff4fcbba2d4673f
    'PYMODULE'),
   ('stringprep',
    'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\stringprep.py',
    'PYMODULE'),
+<<<<<<< HEAD
   ('_colorize',
    'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\_colorize.py',
+=======
+  ('_py_abc',
+   'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\_py_abc.py',
+>>>>>>> b5c7d3a027752913dde426e7eff4fcbba2d4673f
    'PYMODULE'),
   ('subprocess',
    'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\subprocess.py',
@@ -720,12 +730,21 @@
    'BINARY')],
  [],
  [],
+<<<<<<< HEAD
  [('certifi\\cacert.pem',
    'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\certifi\\cacert.pem',
    'DATA'),
   ('certifi\\py.typed',
    'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\certifi\\py.typed',
    'DATA'),
+=======
+ [('certifi\\py.typed',
+   'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\certifi\\py.typed',
+   'DATA'),
+  ('certifi\\cacert.pem',
+   'C:\\Users\\Школа\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\certifi\\cacert.pem',
+   'DATA'),
+>>>>>>> b5c7d3a027752913dde426e7eff4fcbba2d4673f
   ('base_library.zip',
    'C:\\Users\\Школа\\Desktop\\telegram_bot\\build\\Bot\\base_library.zip',
    'DATA')])
