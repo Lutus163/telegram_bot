@@ -82,9 +82,11 @@ def handle_buttons(message):
 
 
     if message.text == "Подписаться":
+        keyboard = types.InlineKeyboardMarkup(row_width=1)
+        register = types.InlineKeyboardButton("Подписка", url='https://t.me/ivanmorozovyogapro')
+        keyboard.add(register)
         with open('img/subscribe.jpg', 'rb') as photo:
-            bot.send_photo(message.chat.id, photo=photo, caption="https://t.me/ivanmorozovyogapro\nПолезный контент для жизни и практики йоги. Анонсы мероприятий.")
-
+            bot.send_photo(message.chat.id, photo=photo, caption="Полезный контент для жизни и практики йоги. Анонсы мероприятий.", reply_markup=keyboard)
 
     elif message.text == "Индивидуальные консультации":
         bot.send_message(message.chat.id, "Скоро")
@@ -103,7 +105,6 @@ def handle_buttons(message):
      
 
     elif message.text == "Йога туры и путешествия":
-
         with open('img/camboja.jpg', 'rb') as photo:
             keyboard = types.InlineKeyboardMarkup(row_width=1)
             register = types.InlineKeyboardButton("Место СИЛЫ: КАМБОДЖА ТАИЛАНД 2025", url='https://vk.cc/cIhp9Y')
