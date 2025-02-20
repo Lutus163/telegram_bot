@@ -40,24 +40,29 @@ def send_welcome(message):
     
     # Создаем клавиатуру
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    join_button = types.InlineKeyboardButton("Подписаться на сообщество КРУГ СИЛЫ", url="111")
     button1 = types.KeyboardButton("Подписаться")
     button2 = types.KeyboardButton("Индивидуальные консультации")
     button3 = types.KeyboardButton("Йога онлайн")
     button4 = types.KeyboardButton("Тренинги и обучение")
     button5 = types.KeyboardButton("Йога туры и путешествия")
+    keyboard.add(join_button)
     keyboard.add(button1)
     keyboard.add(button2)
     keyboard.add(button3)
     keyboard.add(button4)
     keyboard.add(button5)
 
-    # Приветственное сообщение с ником и кнопками
-    bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}! Выберите одну из кнопок:', reply_markup=keyboard)
+    # Приветственное сообщение
+    with open('img/join.jpg', 'rb') as photo:
+            bot.send_photo(message.chat.id, photo=photo, caption='Приветствие пользователю и информация о боте', reply_markup=keyboard)
+    #bot.send_message(message.chat.id, 'Приветственное сообщение', reply_markup=keyboard)
+
     
 
 
 
-# Обработчик нажатий на инлайн-кнопки
+# Обработчик нажатий на кнопки
 @bot.message_handler(func=lambda message: True)
 def handle_buttons(message):
     username = message.from_user.first_name
