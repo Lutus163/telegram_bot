@@ -6,7 +6,7 @@ import os
 import sys
 
 # токен бота
-TOKEN = '7520260408:AAGuLeCI9f8Jybp_fFQFyWi5WHaA69fkSYY'
+TOKEN = '6779027788:AAGrfHq5F11bvIfW0Gnw6uGpZ9xAr6pVI_k'
 bot = telebot.TeleBot(TOKEN)
 
 def resource_path(relative_path):
