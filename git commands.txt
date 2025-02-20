@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 git config --global user.name
 git config --global user.email 
 cd ....
@@ -9,6 +7,9 @@ git init - создать локальный репозиторий
 git remote add origin https://github.com/Lutus163/telegram_bot.git - связать репозитории
 
 git clone https://github.com/Lutus163/telegram_bot.git - клонирование репозитория
+git branch -r - посмотреть все ветки
+git fetch --all - получить все ветки
+git origin название ветки - переключиться на ветку
 
 git status - все не сохраненные версии файлов
 
@@ -34,75 +35,6 @@ git merge dev - провести слияние веток
 
 git rebase dev - слияние веток вместе с комментариями
 
-=======
-git config --global user.name
-git config --global user.email 
-cd ....
 
-git init - создать локальный репозиторий
 
-git remote add origin https://github.com/Lutus163/telegram_bot.git - связать репозитории
 
-git clone https://github.com/Lutus163/telegram_bot.git - клонирование репозитория
-
-git status - все не сохраненные версии файлов
-
-git add "Bot.py" или . для всех файлов из локального репозитория
-
-git commit -m "updated README" - создание чекпоинта файла
-
-git log - все коммиты
-
-git checkout ... - вернуться к версии файла через хеш
-
-git push имя репозитория обычно это origin master - загрузить на гит в ветку свои изменения
-
-git pull origin master - скачать все новые файлы в локальный репозиторий из ветки
-
-git branch - посмотреть все ветки
-
-git branch имя - создать ветку
-
-git checkout имя ветки - переключиться на ветку
-
-git merge dev - провести слияние веток
-
-git rebase dev - слияние веток вместе с комментариями
-
->>>>>>> 455794cee160761229ccf6025d1be94e553f1d4a
-=======
-git config --global user.name
-git config --global user.email 
-cd ....
-
-git init - создать локальный репозиторий
-
-git remote add origin https://github.com/Lutus163/telegram_bot.git - связать репозитории
-
-git clone https://github.com/Lutus163/telegram_bot.git - клонирование репозитория
-
-git status - все не сохраненные версии файлов
-
-git add "Bot.py" или . для всех файлов из локального репозитория
-
-git commit -m "updated README" - создание чекпоинта файла
-
-git log - все коммиты
-
-git checkout ... - вернуться к версии файла через хеш
-
-git push имя репозитория обычно это origin master - загрузить на гит в ветку свои изменения
-
-git pull origin master - скачать все новые файлы в локальный репозиторий из ветки
-
-git branch - посмотреть все ветки
-
-git branch имя - создать ветку
-
-git checkout имя ветки - переключиться на ветку
-
-git merge dev - провести слияние веток
-
-git rebase dev - слияние веток вместе с комментариями
-
->>>>>>> 1b764b5ef6dc393b40490d04ef2d758cad7fdd47
