@@ -6,7 +6,7 @@ from threading import Thread
 import logging
 
 # токен бота
-TOKEN = '6779027788:AAGrfHq5F11bvIfW0Gnw6uGpZ9xAr6pVI_k'
+TOKEN = '7751313417:AAGe0pw3a0t73SBo_vQOU6X-vD-lUGhm0V0'
 bot = telebot.TeleBot(TOKEN)
 subscribers = []  # Список подписчиков
 is_sending = True  # Флаг для контроля рассылки
@@ -66,7 +66,7 @@ def start_bot():
             keyboard.add(button6)
 
             # Приветственное сообщение
-            with open('img/join.jpg', 'rb') as photo:
+            with open('/tg_bot/img/join.jpg', 'rb') as photo:
                 bot.send_photo(message.chat.id, photo=photo, caption='Приветствие пользователю и информация о боте', reply_markup=keyboard)
 
         @bot.message_handler(commands=['stop'])
@@ -119,14 +119,14 @@ def start_bot():
                 keyboard = types.InlineKeyboardMarkup(row_width=1)
                 register = types.InlineKeyboardButton("Подписка", url='https://t.me/ivanmorozovyogapro')
                 keyboard.add(register)
-                with open('img/subscribe.jpg', 'rb') as photo:
+                with open('/tg_bot/img/subscribe.jpg', 'rb') as photo:
                     bot.send_photo(message.chat.id, photo=photo, caption="Полезный контент для жизни и практики йоги. Анонсы мероприятий.", reply_markup=keyboard)
 
             elif message.text == "Индивидуальные консультации":
                 keyboard = types.InlineKeyboardMarkup(row_width=1)
                 register = types.InlineKeyboardButton("Подписка", url='https://t.me/ivanmorozovyogapro')
                 keyboard.add(register)
-                with open('img/individual.jpg', 'rb') as photo:
+                with open('/tg_bot/img/individual.jpg', 'rb') as photo:
                     bot.send_photo(message.chat.id, photo=photo, reply_markup=keyboard)
 
 
@@ -141,12 +141,12 @@ def start_bot():
                 keyboard = types.InlineKeyboardMarkup(row_width=1)
                 register = types.InlineKeyboardButton("Регистрация", url='http://www.level-2.amritnam.ru/')
                 keyboard.add(register)
-                with open('img/trainings.mp4', 'rb') as video:
+                with open('/tg_bot/img/trainings.mp4', 'rb') as video:
                     bot.send_video(chat_id=message.chat.id, video=video, caption="Международный тренинг Кундалини Йоги: Уровень 2\n«Мы готовы выйти за горизонты своей личности и создать жизнь нового уровня».\nМОДУЛЬ «Путешествие в Слушание: От пустых разговоров к осознанной коммуникации» \n23 - 29 марта 2025 года\nПриглашаем всех, кто завершил обучение на первом уровне (допускаются студенты других школ). Ведущие – Сатйяврати Карта (Франция), Цивилева Светлана, Морозов Иван, Терентьева Татьяна, Бабенко Алексей\nМесто проведения: эко-отель «Территория Дзэн», Тверская область, поселение Щеколдино. \nТрансфер туда – 23 марта в 15:00 от метро «Молодежная»,\nобратно - 29 марта в 11:00 из отеля (оплачивается отдельно).\nСтоимость участия:\n- Москва: 30400 руб.\n- Иногородние: 28500 руб.\nСтоимость для семейной пары (близких родственников):\n- Москва: 28500 руб.\n- Иногородние: 26600 руб.\nСКИДКА:\nповторное участие – 19000 руб.\nСТОИМОСТЬ ПРОЖИВАНИЯ оплачивается дополнительно:\n- 27500 руб. за двухместное проживание\n- 54000 руб. за одноместное проживание", reply_markup=keyboard)
      
 
             elif message.text == "Йога туры и путешествия":
-                with open('img/camboja.jpg', 'rb') as photo:
+                with open('/tg_bot/img/camboja.jpg', 'rb') as photo:
                     keyboard = types.InlineKeyboardMarkup(row_width=1)
                     register = types.InlineKeyboardButton("Место СИЛЫ: КАМБОДЖА ТАИЛАНД 2025", url='https://vk.cc/cIhp9Y')
                     keyboard.add(register)
@@ -161,7 +161,7 @@ def start_bot():
     except Exception as e:
         logging.error(f"Ошибка: {e}")
         time.sleep(5)  # Задержка перед перезапуском
-        start_bot()  # Перезапуск бота
+        start_bot()  # Перезапуск бота 
         
         
 # Запуск бота
